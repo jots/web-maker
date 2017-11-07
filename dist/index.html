@@ -3,20 +3,11 @@
 		<meta charset="utf-8">
 		<title>Web Maker</title>
 
-		<!-- build:css vendor.css -->
-		<link rel="stylesheet" href="lib/codemirror/lib/codemirror.css">
-		<link rel="stylesheet" href="lib/codemirror/addon/hint/show-hint.css">
-		<link rel="stylesheet" href="lib/codemirror/addon/fold/foldgutter.css">
-		<link rel="stylesheet" href="lib/codemirror/addon/dialog/dialog.css">
-		<link rel="stylesheet" href="lib/hint.min.css">
-		<link rel="stylesheet" href="lib/inlet.css">
-		<!-- endbuild -->
+		<link rel="stylesheet" href="vendor.css">
 		
 		<link rel="stylesheet" id="editorThemeLinkTag" href="/lib/codemirror/theme/monokai.css"></link>
 
-		<!-- build:css style.css -->
 		<link rel="stylesheet" href="style.css">
-		<!-- endbuild -->
 
 		<style id="fontStyleTemplate" type="template">
 			@font-face {
@@ -136,7 +127,7 @@
 					</div>
 				</div>
 				<div class="demo-side" id="js-demo-side">
-					<iframe src="about://blank" frameborder="0" id="demo-frame" allowfullscreen></iframe>
+					<iframe src="about://blank" frameborder="0" id="demo-frame"></iframe>
 					<div id="consoleEl" class="console is-minimized">
 						<div id="consoleLogEl" class="console__log" class="code">
 							<div class="js-console__header  code-wrap__header" title="Double click to toggle console">
@@ -212,7 +203,7 @@
 							<path d="M22,17V7H6V17H22M22,5A2,2 0 0,1 24,7V17C24,18.11 23.1,19 22,19H16V21H18V23H10V21H12V19H6C4.89,19 4,18.11 4,17V7A2,2 0 0,1 6,5H22M2,3V15H0V3A2,2 0 0,1 2,1H20V3H2Z" />
 						</svg>
 					</a>
-
+				
 
 					<div class="footer__separator"></div>
 
@@ -232,20 +223,15 @@
 
 				<a href="https://webmakerapp.com/" target="_blank"><div class="logo"></div></a>
 				&copy; Web Maker &nbsp;&nbsp;
-				<a d-open-modal="helpModal" data-event-category="ui" data-event-action="helpButtonClick" class="footer__link  hint--rounded  hint--top-right" aria-label="Help">
+				<a d-open-modal="helpModal" data-event-category="ui" data-event-action="helpButtonClick" class="footer__link  hint--rounded  hint--top-right" data-hint="Help">
 					<svg style="width:20px; height:20px; vertical-align:text-bottom" viewBox="0 0 24 24">
 						<path d="M15.07,11.25L14.17,12.17C13.45,12.89 13,13.5 13,15H11V14.5C11,13.39 11.45,12.39 12.17,11.67L13.41,10.41C13.78,10.05 14,9.55 14,9C14,7.89 13.1,7 12,7A2,2 0 0,0 10,9H8A4,4 0 0,1 12,5A4,4 0 0,1 16,9C16,9.88 15.64,10.67 15.07,11.25M13,19H11V17H13M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12C22,6.47 17.5,2 12,2Z" />
 					</svg>
 				</a>
-				<a d-open-modal="keyboardShortcutsModal" data-event-category="ui" data-event-action="keyboardShortcutButtonClick" class="footer__link  hint--rounded  hint--top-right" aria-label="Keyboard shortcuts">
-					<svg style="width:20px; height:20px; vertical-align:text-bottom">
-						<use xlink:href="#keyboard-icon"></use>
-					</svg>
-				</a>
 				<!-- #00ACED -->
-				<a class="footer__link  hint--rounded  hint--top-right" aria-label="Tweet about 'Web Maker'" href="http://twitter.com/share?url=https://webmakerapp.com/&text=Web Maker - A blazing fast %26 offline web playground! via @webmakerApp&related=webmakerApp&hashtags=web,playground,chrome,extension" target="_blank">
+				<a class="footer__link  hint--rounded  hint--top-right" data-hint="Tweet about 'Web Maker'" href="http://twitter.com/share?url=https://webmakerapp.com/&text=Web Maker - A blazing fast %26 offline web playground! via @webmakerApp&related=webmakerApp&hashtags=web,playground,chrome,extension" target="_blank">
 					<svg style="width:20px; height:20px; vertical-align:text-bottom">
-						<use xlink:href="#twitter-icon"></use>
+						<use xlink:href="#twitter-icon"></use>							
 					</svg>
 				</a>
 
@@ -256,16 +242,18 @@
 			<div class="modal__content">
 				<a d-click="onModalCloseBtnClick" href="" aria-label="Close add library modal" title="Close" class="js-modal__close-btn  modal__close-btn">
 					<svg>
-						<use xlink:href="#cross-icon"></use>
+						<use xlink:href="#cross-icon"></use>							
 					</svg>
 				</a>
 				<h1>Add Library</h1>
+				<h3>JavaScript</h3>
+				<p style="font-size: 0.8em;opacity: 0.7;">Note: You can load external scripts from following domains: localhost, https://ajax.googleapis.com, https://code.jquery.com, https://cdnjs.cloudflare.com, https://unpkg.com, https://maxcdn.com, https://cdn77.com, https://maxcdn.bootstrapcdn.com, https://cdn.jsdelivr.net/, https://rawgit.com, https://wzrd.in</p>
+				<textarea id="js-external-js" class="full-width" id="" cols="30" rows="5" placeholder="Start typing name of a library. Put each library in new line"></textarea>
 
-				<input type="text" id="externalLibrarySearchInput" class="full-width" placeholder="Type here to search libraries">
-				<div class="tar opacity--70">
-					<small>Powered by cdnjs</small>
-				</div>
-				<div style="margin:20px 0;">
+				<h3>CSS</h3>
+				<textarea id="js-external-css" class="full-width" id="" cols="30" rows="5" placeholder="Start typing name of a library. Put each library in new line"></textarea>
+
+				<div style="margin-top:20px;">
 					Choose from popular libraries:
 					<select name="" id="js-add-library-select">
 						<option value="">-------</option>
@@ -277,14 +265,6 @@
 						</optgroup>
 					</select>
 				</div>
-
-				<h3>JavaScript</h3>
-				<p style="font-size: 0.8em;" class="opacity--70">Note: You can load external scripts from following domains: localhost, https://ajax.googleapis.com, https://code.jquery.com, https://cdnjs.cloudflare.com, https://unpkg.com, https://maxcdn.com, https://cdn77.com, https://maxcdn.bootstrapcdn.com, https://cdn.jsdelivr.net/, https://rawgit.com, https://wzrd.in</p>
-				<textarea id="js-external-js" class="full-width" id="" cols="30" rows="5" placeholder="Start typing name of a library. Put each library in new line"></textarea>
-
-				<h3>CSS</h3>
-				<textarea id="js-external-css" class="full-width" id="" cols="30" rows="5" placeholder="Start typing name of a library. Put each library in new line"></textarea>
-
 			</div>
 		</div>
 
@@ -292,7 +272,7 @@
 			<div class="modal__content">
 				<a d-click="onModalCloseBtnClick" href="" aria-label="Close CSS settings modal" title="Close" class="js-modal__close-btn  modal__close-btn">
 					<svg>
-						<use xlink:href="#cross-icon"></use>
+						<use xlink:href="#cross-icon"></use>							
 					</svg>
 				</a>
 				<h1>Atomic CSS Settings</h1>
@@ -310,7 +290,7 @@
 						<use xlink:href="#cross-icon"></use>
 					</svg>
 				</a>
-				<h1>Web Maker<small style="font-size:14px;"> v2.9.5</small></h1>
+				<h1>Web Maker<small style="font-size:14px;"> v2.9.3</small></h1>
 				<div>
 					<p>Made with <span style="margin-right: 8px;">💖</span> & <span style="margin-right: 8px;">🙌</span> by <a href="https://twitter.com/chinchang457" target="_blank">Kushagra Gour</a></p>
 					<p>Tweet out your feature requests, comments & suggestions to <a target="_blank" href="https://twitter.com/webmakerApp">@webmakerApp</a>.</p>
@@ -340,11 +320,6 @@
 						"Web Maker" is <a target="_blank" href="https://github.com/chinchang/web-maker">open-source</a> under the <a href="https://opensource.org/licenses/MIT" target="_blank">MIT License</a>.
 					</p>
 				</div>
-			</div>
-		</div>
-
-		<div class="modal" id="keyboardShortcutsModal">
-			<div class="modal__content" d-html="keyboard-shortcuts.html">
 			</div>
 		</div>
 
@@ -399,7 +374,7 @@
 				</div>
 			</div>
 
-
+				
 				<p class="tac">
 					<button class="btn" d-click="closeAllOverlays">Lets start!</button>
 				</p>
@@ -410,7 +385,7 @@
 			<div class="modal__content">
 				<a d-click="onModalCloseBtnClick" href="" aria-label="Close Settings" title="Close" class="js-modal__close-btn  modal__close-btn">
 					<svg>
-						<use xlink:href="#cross-icon"></use>
+						<use xlink:href="#cross-icon"></use>							
 					</svg>
 				</a>
 				<h1>Settings</h1>
@@ -527,7 +502,7 @@
 						</label>
 					</div>
 				</div>
-
+        
 				<hr>
 
 				<h3>Fun</h3>
@@ -630,62 +605,10 @@
 			<symbol id="cross-icon" viewBox="0 0 24 24">
 				<path d="M19,6.41L17.59,5L12,10.59L6.41,5L5,6.41L10.59,12L5,17.59L6.41,19L12,13.41L17.59,19L19,17.59L13.41,12L19,6.41Z" />
 			</symbol>
-			<symbol id="keyboard-icon" viewBox="0 0 24 24">
-				<path d="M19,10H17V8H19M19,13H17V11H19M16,10H14V8H16M16,13H14V11H16M16,17H8V15H16M7,10H5V8H7M7,13H5V11H7M8,11H10V13H8M8,8H10V10H8M11,11H13V13H11M11,8H13V10H11M20,5H4C2.89,5 2,5.89 2,7V17A2,2 0 0,0 4,19H20A2,2 0 0,0 22,17V7C22,5.89 21.1,5 20,5Z" />
-			</symbol>
 		</svg>
 
-		<!-- build:js vendor.js -->
-		<script src="lib/codemirror/lib/codemirror.js"></script>
-		<script src="lib/codemirror/addon/edit/matchbrackets.js"></script>
-		<script src="lib/codemirror/addon/edit/matchtags.js"></script>
-		<script src="lib/codemirror/addon/edit/closebrackets.js"></script>
-		<script src="lib/codemirror/addon/edit/closetag.js"></script>
-		<script src="lib/codemirror/addon/comment/comment.js"></script>
-		<script src="lib/codemirror/addon/fold/foldcode.js"></script>
-		<script src="lib/codemirror/addon/fold/foldgutter.js"></script>
-		<script src="lib/codemirror/addon/fold/xml-fold.js"></script>
-		<script src="lib/codemirror/addon/fold/indent-fold.js"></script>
-		<script src="lib/codemirror/addon/fold/comment-fold.js"></script>
-		<script src="lib/codemirror/addon/fold/brace-fold.js"></script>
-		<script src="lib/codemirror/addon/mode/loadmode.js"></script>
-		<script src="lib/codemirror/addon/hint/show-hint.js"></script>
-		<script src="lib/codemirror/addon/hint/javascript-hint.js"></script>
-		<script src="lib/codemirror/addon/hint/xml-hint.js"></script>
-		<script src="lib/codemirror/addon/hint/html-hint.js"></script>
-		<script src="lib/codemirror/addon/hint/css-hint.js"></script>
-		<script src="lib/codemirror/addon/selection/active-line.js"></script>
-		<script src="lib/codemirror/addon/search/searchcursor.js"></script>
-		<script src="lib/codemirror/addon/search/search.js"></script>
-		<script src="lib/codemirror/addon/dialog/dialog.js"></script>
-		<script src="lib/codemirror/addon/search/jump-to-line.js"></script>
+		<script src="vendor.js"></script>
 
-		<script src="lib/codemirror/mode/xml/xml.js"></script>
-		<script src="lib/codemirror/mode/javascript/javascript.js"></script>
-		<script src="lib/codemirror/mode/css/css.js"></script>
-		<script src="lib/codemirror/mode/htmlmixed/htmlmixed.js"></script>
-		<script src="lib/codemirror/keymap/sublime.js"></script>
-		<script src="lib/codemirror/keymap/vim.js"></script>
-		<script src="lib/emmet.js"></script>
-		<script src="lib/code-blast.js"></script>
-
-		<script src="lib/split.js"></script>
-		<script src="lib/inlet.min.js"></script>
-		<script src="lib/esprima.js"></script>
-		<!-- endbuild -->
-
-		<!-- build:js script.js -->
-		<script src="service-worker-registration.js"></script>
-		<script src="utils.js"></script>
-		<script src="db.js"></script>
-		<script src="analytics.js"></script>
-		<script src="deferred.js"></script>
-		<script src="loader.js"></script>
-		<script src="notifications.js"></script>
-		<script src="library-list.js"></script>
-		<script src="textarea-autocomplete.js"></script>
 		<script src="script.js"></script>
-		<script src="dropdown.js"></script>
-		<!-- endbuild -->
 	</body>
 </html>
