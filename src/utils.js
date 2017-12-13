@@ -180,4 +180,7 @@
 		log: log,
 		once: once
 	};
+
+	window.chrome = window.chrome || {};
+	window.chrome.i18n = { getMessage: () => {} };
 })();
